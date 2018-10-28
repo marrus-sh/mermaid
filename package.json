@@ -20,7 +20,6 @@
   },
   "directories": {
     "doc": "./Sources",
-    "example": "./Demo",
     "lib": "./Build",
     "test": "./Tests"
   },

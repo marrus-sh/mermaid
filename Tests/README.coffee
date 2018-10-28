@@ -9,6 +9,7 @@ describe "ｍｅｒｍａｉｄ", ->
   it "can't be constructed", ->
     proto = Object.getPrototypeOf global.ｍｅｒｍａｉｄ
     (expect proto.constructor).throws
+    (expect -> new proto.constructor).throws
 
   it "is available on all properties", ->
     MERPERSON = "\u{1F9DC}"

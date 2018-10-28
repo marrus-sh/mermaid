@@ -60,8 +60,8 @@ Finally, ｍｅｒｍａｉｄ does *not* support `xsd:duration` or the values
 ##  ＨｏｗＴｏ  ##
 
 If you really want to understand how to use `ｍｅｒｍａｉｄ`, you
-  should [read the source](./Source/) (but like, the English parts, not
-  the code).
+  should [read the source](./Sources/) (but like, the English parts,
+  not the code).
 The documents are organized by specification, so if you know what
   you're looking for, things hopefully won't be too hard to find.
 

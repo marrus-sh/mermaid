@@ -30,11 +30,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 (function () {
   var _termTypes;
 
-  var BCP47, BCP47ℙ, BLANK_NODE, _BlankNode, BlankNodeℙ, DEFAULT_GRAPH, _DataFactory, DataFactoryℙ, _DefaultGraph, DefaultGraphℙ, LITERAL, Literal, Literalℙ, NAMED_NODE, _NamedNode, NamedNodeℙ, _Quad, Quadℙ, _RDFNode, RDFNodeℙ, RDF_NODE, RFC3987, RFC3987ℙ, SIGIL, _Term, Termℙ, Triple, Tripleℙ, VARIABLE, _Variable, Variableℙ, constructǃ, global, nextBlankNode, ref, termTypes, Ø, Ｍｅｒｍａｉｄ, ｍｅｒｍａｉｄ;
+  var BCP47, BCP47ℙ, BLANK_NODE, _BlankNode, BlankNodeℙ, DEFAULT_GRAPH, _DataFactory, DataFactoryℙ, _DefaultGraph, DefaultGraphℙ, LITERAL, Literal, Literalℙ, NAMED_NODE, _NamedNode, NamedNodeℙ, _Quad, Quadℙ, _RDFNode, RDFNodeℙ, RDF_NODE, RFC3987, RFC3987ℙ, SIGIL, _Term, Termℙ, Triple, Tripleℙ, VARIABLE, _Variable, Variableℙ, constructǃ, global, nextBlankNode, termTypes, Ø, Ｍｅｒｍａｉｄ, ｍｅｒｍａｉｄ;
 
-  global = (ref = typeof self !== "undefined" && self !== null ? self : window) != null ? ref : exports;
+  global = typeof self !== "undefined" && self !== null ? self : typeof window !== "undefined" && window !== null ? window : typeof exports !== "undefined" && exports !== null ? exports : null;
 
-  if (!global) {
+  if (global == null) {
     throw new ReferenceError("Unknown global object.");
   }
 
@@ -121,12 +121,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     enumerable: true,
     value: function () {
       var regex;
-      regex = /^(():(\/\/((?:((?:(?:[!\$&-\.0-;=A-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)@)?((\[((?:[0-9A-Fa-f]{1,4}:){6}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|::(?:[0-9A-Fa-f]{1,4}:){5}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){4}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){3}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){2}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:)(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})?::[0-9A-Fa-f]{1,4}(?:(?:[0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})?::)|(v[0-9A-Fa-f]+\.[!\$&-\.0-;=A-Z_a-z~]+)\])|((?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|((?:(?:[!\$&-\.0-9;=A-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))(?::([0-9]*))?((?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*))|(\/(?:(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})+(?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*)?)|((?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})+(?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*)|())(?:\?((?:(?:[!\$&-;=\?-Z_a-z~\xA0-\uD7FF\uE000-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E\uDB80-\uDBBE\uDBC0-\uDBFE][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F\uDBBF\uDBFF][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))?)(?:#((?:(?:[!\$&-;=\?-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))?$/;
+      regex = /^(([A-Za-z][\+\x2D\.0-9A-Za-z]*):(\/\/((?:((?:(?:[!\$&-\.0-;=A-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)@)?((\[((?:[0-9A-Fa-f]{1,4}:){6}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|::(?:[0-9A-Fa-f]{1,4}:){5}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){4}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){3}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:){2}(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:)(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})?::(?:[0-9A-Fa-f]{1,4}:[0-9A-Fa-f]{1,4}|(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(?:(?:[0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})?::[0-9A-Fa-f]{1,4}(?:(?:[0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})?::)|(v[0-9A-Fa-f]+\.[!\$&-\.0-;=A-Z_a-z~]+)\])|((?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|((?:(?:[!\$&-\.0-9;=A-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))(?::([0-9]*))?((?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*))|(\/(?:(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})+(?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*)?)|((?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})+(?:\/(?:(?:[!\$&-\.0-;=@-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*)*)|())(?:\?((?:(?:[!\$&-;=\?-Z_a-z~\xA0-\uD7FF\uE000-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E\uDB80-\uDBBE\uDBC0-\uDBFE][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F\uDBBF\uDBFF][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))?)(?:#((?:(?:[!\$&-;=\?-Z_a-z~\xA0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[\uD800-\uD83E\uD840-\uD87E\uD880-\uD8BE\uD8C0-\uD8FE\uD900-\uD93E\uD940-\uD97E\uD980-\uD9BE\uD9C0-\uD9FE\uDA00-\uDA3E\uDA40-\uDA7E\uDA80-\uDABE\uDAC0-\uDAFE\uDB00-\uDB3E\uDB40-\uDB7E][\uDC00-\uDFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F][\uDC00-\uDFFD])|%[0-9A-Fa-f]{2})*))?$/;
 
       RFC3987 = function RFC3987(iri) {
-        var IPLiteral, IPv4address, IPv6address, IPvFuture, absoluteIRI, iauthority, ifragment, ihierPart, ihost, ipathAbempty, ipathAbsolute, ipathEmpty, ipathRootless, iquery, iregName, iuserinfo, match, port, ref1, ref2, scheme;
+        var IPLiteral, IPv4address, IPv6address, IPvFuture, absoluteIRI, iauthority, ifragment, ihierPart, ihost, ipathAbempty, ipathAbsolute, ipathEmpty, ipathRootless, iquery, iregName, iuserinfo, match, port, ref, ref1, scheme;
+        match = (iri ? iri.toString() : "").match(regex);
 
-        var _match = (iri ? iri.toString() : "").match(regex);
+        if (match == null) {
+          throw new TypeError("IRI <".concat(iri, "> not well-formed under RFC3987"));
+        }
+
+        var _match = match;
 
         var _match2 = _slicedToArray(_match, 19);
 
@@ -149,11 +154,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         ipathEmpty = _match2[16];
         iquery = _match2[17];
         ifragment = _match2[18];
-
-        if (match == null) {
-          throw new TypeError("IRI not well-formed under RFC3987");
-        }
-
         return Object.defineProperties(this != null ? this : Object.create(RFC3987ℙ), {
           iri: {
             enumerable: true,
@@ -177,7 +177,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           },
           path: {
             enumerable: true,
-            value: (ref1 = (ref2 = ipathAbempty != null ? ipathAbempty : ipathAbsolute) != null ? ref2 : ipathRootles) != null ? ref1 : ipathEmpty
+            value: (ref = (ref1 = ipathAbempty != null ? ipathAbempty : ipathAbsolute) != null ? ref1 : ipathRootles) != null ? ref : ipathEmpty
           },
           query: {
             enumerable: true,
@@ -250,9 +250,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       regex = /^(?:(([A-Za-z]{2,3}(-[A-Za-z]{3}(?:-[A-Za-z]{3}){0,2})?|[A-Za-z]{4,8})(?:-([A-Za-z]{4}))?(?:-([A-Za-z]{2}|\d{3}))?(?:-([0-9A-Za-z]{5,8}|\d[0-9A-Za-z]{3}(?:-[0-9A-Za-z]{5,8}|\d[0-9A-Za-z]{3})*))?(?:-([0-9A-WY-Za-wy-z](?:-[0-9A-Za-z]{2,8})+(?:-[0-9A-WY-Za-wy-z](?:-[0-9A-Za-z]{2,8})+)*))?(?:-(x(?:-[0-9A-Za-z]{2,8})+))?)|(x(?:-[0-9A-Za-z]{2,8})+)|(en-GB-oed|i-(?:ami|bnn|default|enochian|hak|klingon|lux|mingo|navajo|pwn|tao|tay|tsu)|sgn-(?:BE-FR|BE-NL|CH-DE)))?$/;
 
       BCP47 = function BCP47(tag) {
-        var extension, extlang, grandfathered, langtag, language, match, privateuse, privateuseonly, ref1, ref2, ref3, region, script, variant;
+        var extension, extlang, grandfathered, langtag, language, match, privateuse, privateuseonly, ref, ref1, ref2, region, script, variant;
+        match = (tag != null ? tag.toString() : "").match(regex);
 
-        var _match3 = (tag != null ? tag.toString() : "").match(regex);
+        if (match == null) {
+          throw new TypeError("Language tag not well-formed under BCP47");
+        }
+
+        var _match3 = match;
 
         var _match4 = _slicedToArray(_match3, 11);
 
@@ -267,15 +272,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         privateuse = _match4[8];
         privateuseonly = _match4[9];
         grandfathered = _match4[10];
-
-        if (match == null) {
-          throw new TypeError("Language tag not well-formed under BCP47");
-        }
-
         return Object.defineProperties(this != null ? this : Object.create(BCP47ℙ), {
           langtag: {
             enumerable: true,
-            value: (ref1 = (ref2 = langtag != null ? langtag : privateuseonly) != null ? ref2 : grandfathered) != null ? ref1 : ""
+            value: (ref = (ref1 = langtag != null ? langtag : privateuseonly) != null ? ref1 : grandfathered) != null ? ref : ""
           },
           language: {
             enumerable: true,
@@ -303,7 +303,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           },
           privateuse: {
             enumerable: true,
-            value: (ref3 = privateuse != null ? privateuse : privateuseonly) != null ? ref3 : ""
+            value: (ref2 = privateuse != null ? privateuse : privateuseonly) != null ? ref2 : ""
           }
         });
       };
@@ -389,7 +389,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       termType: {
         configurable: true,
         enumerable: true,
-        writable: false,
         get: function get() {
           return termTypes[this.interfaceType >>> 0];
         }
@@ -453,7 +452,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       interfaceName: {
         configurable: true,
         enumerable: true,
-        writable: false,
         get: function get() {
           return termTypes[this.interfaceType >>> 0];
         }
@@ -467,7 +465,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       value: {
         configurable: true,
         enumerable: true,
-        writable: false,
         get: function get() {
           if (this.nominalValue != null) {
             return this.nominalValue.toString();
@@ -535,7 +532,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _RDFNode.call(this, BLANK_NODE, value);
   };
 
-  Object.defineProperty(_NamedNode, "prototype", {
+  Object.defineProperty(_BlankNode, "prototype", {
     writable: false,
     value: Object.defineProperties(BlankNodeℙ = Object.create(RDFNodeℙ), {
       constructor: {
@@ -615,10 +612,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       equals: {
         value: function value(other) {
-          var ref1, ref2;
+          var ref, ref1;
 
           if (this instanceof Literal && other instanceof Literal) {
-            return this.interfaceType === other.interfaceType && this.nominalValue === other.nominalValue && ((ref1 = this.language) != null ? ref1 : "") === ((ref2 = other.language) != null ? ref2 : "") && Termℙ.equals.call(this.datatype, other.datatype);
+            return this.interfaceType === other.interfaceType && this.nominalValue === other.nominalValue && ((ref = this.language) != null ? ref : "") === ((ref1 = other.language) != null ? ref1 : "") && Termℙ.equals.call(this.datatype, other.datatype);
           } else {
             return Termℙ.equals.call(this, other);
           }
@@ -792,8 +789,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           };
 
           return function () {
-            var literal, ref1, type, value;
-            type = (ref1 = this != null ? this.datatype : void 0) != null ? ref1 : "";
+            var literal, ref, type, value;
+            type = (ref = this != null ? this.datatype : void 0) != null ? ref : "";
 
             literal = function () {
               var value;
@@ -806,7 +803,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             }();
 
             value = function () {
-              var array, base64Map, char, day, hour, i, index, j, len, match, minute, month, next24Bits, number, offset, pos, ref10, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9, second, size, string, time_zone_fourteen_hundred, time_zone_hour, time_zone_minute, time_zone_sign, timezoneOffset, twenty_four_hundred, uri, year;
+              var array, base64Map, char, day, hour, i, index, j, len, match, minute, month, next24Bits, number, offset, pos, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9, second, size, string, time_zone_fourteen_hundred, time_zone_hour, time_zone_minute, time_zone_sign, timezoneOffset, twenty_four_hundred, uri, year;
 
               switch (type.toString()) {
                 case "http://www.w3.org/2001/XMLSchema#string":
@@ -883,11 +880,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (!/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(string)) {
-                    return;
-                  }
-
-                  if (typeof match !== "undefined" && match !== null) {
+                  if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(string)) {
                     return +string;
                   }
 
@@ -973,7 +966,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (9223372036854775808 <= (ref2 = number = +string) && ref2 <= 9223372036854775807) {
+                  if (9223372036854775808 <= (ref1 = number = +string) && ref1 <= 9223372036854775807) {
                     return number;
                   }
 
@@ -988,7 +981,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (0 <= (ref3 = number = +string) && ref3 <= 18446744073709551615) {
+                  if (0 <= (ref2 = number = +string) && ref2 <= 18446744073709551615) {
                     return number;
                   }
 
@@ -1003,7 +996,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (1 << 31 <= (ref4 = number = +string) && ref4 <= ~(1 << 31)) {
+                  if (1 << 31 <= (ref3 = number = +string) && ref3 <= ~(1 << 31)) {
                     return number;
                   }
 
@@ -1018,7 +1011,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (0 <= (ref5 = number = +string) && ref5 <= 4294967295) {
+                  if (0 <= (ref4 = number = +string) && ref4 <= 4294967295) {
                     return number;
                   }
 
@@ -1033,7 +1026,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (-32768 <= (ref6 = number = +string) && ref6 <= 32767) {
+                  if (-32768 <= (ref5 = number = +string) && ref5 <= 32767) {
                     return number;
                   }
 
@@ -1048,7 +1041,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (0 <= (ref7 = number = +string) && ref7 <= 65535) {
+                  if (0 <= (ref6 = number = +string) && ref6 <= 65535) {
                     return number;
                   }
 
@@ -1063,7 +1056,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (-128 <= (ref8 = number = +string) && ref8 <= 127) {
+                  if (-128 <= (ref7 = number = +string) && ref7 <= 127) {
                     return number;
                   }
 
@@ -1078,7 +1071,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  if (0 <= (ref9 = number = +string) && ref9 <= 255) {
+                  if (0 <= (ref8 = number = +string) && ref8 <= 255) {
                     return number;
                   }
 
@@ -1110,30 +1103,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
-
-                  var _string$match2 = _slicedToArray(_string$match, 12);
-
-                  match = _string$match2[0];
-                  year = _string$match2[1];
-                  month = _string$match2[2];
-                  day = _string$match2[3];
-                  var _string$match2$ = _string$match2[4];
-                  hour = _string$match2$ === void 0 ? 0 : _string$match2$;
-                  var _string$match2$2 = _string$match2[5];
-                  minute = _string$match2$2 === void 0 ? 0 : _string$match2$2;
-                  var _string$match2$3 = _string$match2[6];
-                  second = _string$match2$3 === void 0 ? 0 : _string$match2$3;
-                  twenty_four_hundred = _string$match2[7];
-                  var _string$match2$4 = _string$match2[8];
-                  time_zone_sign = _string$match2$4 === void 0 ? "+" : _string$match2$4;
-                  time_zone_hour = _string$match2[9];
-                  time_zone_minute = _string$match2[10];
-                  time_zone_fourteen_hundred = _string$match2[11];
+                  match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
                   if (match == null) {
                     return;
                   }
+
+                  var _match5 = match;
+
+                  var _match6 = _slicedToArray(_match5, 12);
+
+                  match = _match6[0];
+                  year = _match6[1];
+                  month = _match6[2];
+                  day = _match6[3];
+                  var _match6$ = _match6[4];
+                  hour = _match6$ === void 0 ? 0 : _match6$;
+                  var _match6$2 = _match6[5];
+                  minute = _match6$2 === void 0 ? 0 : _match6$2;
+                  var _match6$3 = _match6[6];
+                  second = _match6$3 === void 0 ? 0 : _match6$3;
+                  twenty_four_hundred = _match6[7];
+                  var _match6$4 = _match6[8];
+                  time_zone_sign = _match6$4 === void 0 ? "+" : _match6$4;
+                  time_zone_hour = _match6[9];
+                  time_zone_minute = _match6[10];
+                  time_zone_fourteen_hundred = _match6[11];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1152,30 +1147,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match3 = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))$/);
-
-                  var _string$match4 = _slicedToArray(_string$match3, 12);
-
-                  match = _string$match4[0];
-                  year = _string$match4[1];
-                  month = _string$match4[2];
-                  day = _string$match4[3];
-                  var _string$match4$ = _string$match4[4];
-                  hour = _string$match4$ === void 0 ? 0 : _string$match4$;
-                  var _string$match4$2 = _string$match4[5];
-                  minute = _string$match4$2 === void 0 ? 0 : _string$match4$2;
-                  var _string$match4$3 = _string$match4[6];
-                  second = _string$match4$3 === void 0 ? 0 : _string$match4$3;
-                  twenty_four_hundred = _string$match4[7];
-                  var _string$match4$4 = _string$match4[8];
-                  time_zone_sign = _string$match4$4 === void 0 ? "+" : _string$match4$4;
-                  time_zone_hour = _string$match4[9];
-                  time_zone_minute = _string$match4[10];
-                  time_zone_fourteen_hundred = _string$match4[11];
+                  match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))$/);
 
                   if (match == null) {
                     return;
                   }
+
+                  var _match7 = match;
+
+                  var _match8 = _slicedToArray(_match7, 12);
+
+                  match = _match8[0];
+                  year = _match8[1];
+                  month = _match8[2];
+                  day = _match8[3];
+                  var _match8$ = _match8[4];
+                  hour = _match8$ === void 0 ? 0 : _match8$;
+                  var _match8$2 = _match8[5];
+                  minute = _match8$2 === void 0 ? 0 : _match8$2;
+                  var _match8$3 = _match8[6];
+                  second = _match8$3 === void 0 ? 0 : _match8$3;
+                  twenty_four_hundred = _match8[7];
+                  var _match8$4 = _match8[8];
+                  time_zone_sign = _match8$4 === void 0 ? "+" : _match8$4;
+                  time_zone_hour = _match8[9];
+                  time_zone_minute = _match8[10];
+                  time_zone_fourteen_hundred = _match8[11];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1194,27 +1191,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match5 = string.match(/^(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
-
-                  var _string$match6 = _slicedToArray(_string$match5, 9);
-
-                  match = _string$match6[0];
-                  var _string$match6$ = _string$match6[1];
-                  hour = _string$match6$ === void 0 ? 0 : _string$match6$;
-                  var _string$match6$2 = _string$match6[2];
-                  minute = _string$match6$2 === void 0 ? 0 : _string$match6$2;
-                  var _string$match6$3 = _string$match6[3];
-                  second = _string$match6$3 === void 0 ? 0 : _string$match6$3;
-                  twenty_four_hundred = _string$match6[4];
-                  var _string$match6$4 = _string$match6[5];
-                  time_zone_sign = _string$match6$4 === void 0 ? "+" : _string$match6$4;
-                  time_zone_hour = _string$match6[6];
-                  time_zone_minute = _string$match6[7];
-                  time_zone_fourteen_hundred = _string$match6[8];
+                  match = string.match(/^(([01][0-9]|2[0-3]):([0-5][0-9]):((?:[0-5][0-9])(?:\.(?:[0-9]+))?)|(24:00:00(?:\.0+)?))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
                   if (match == null) {
                     return;
                   }
+
+                  var _match9 = match;
+
+                  var _match10 = _slicedToArray(_match9, 9);
+
+                  match = _match10[0];
+                  var _match10$ = _match10[1];
+                  hour = _match10$ === void 0 ? 0 : _match10$;
+                  var _match10$2 = _match10[2];
+                  minute = _match10$2 === void 0 ? 0 : _match10$2;
+                  var _match10$3 = _match10[3];
+                  second = _match10$3 === void 0 ? 0 : _match10$3;
+                  twenty_four_hundred = _match10[4];
+                  var _match10$4 = _match10[5];
+                  time_zone_sign = _match10$4 === void 0 ? "+" : _match10$4;
+                  time_zone_hour = _match10[6];
+                  time_zone_minute = _match10[7];
+                  time_zone_fourteen_hundred = _match10[8];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1233,23 +1232,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match7 = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match8 = _slicedToArray(_string$match7, 8);
-
-                  match = _string$match8[0];
-                  year = _string$match8[1];
-                  month = _string$match8[2];
-                  day = _string$match8[3];
-                  var _string$match8$ = _string$match8[4];
-                  time_zone_sign = _string$match8$ === void 0 ? "+" : _string$match8$;
-                  time_zone_hour = _string$match8[5];
-                  time_zone_minute = _string$match8[6];
-                  time_zone_fourteen_hundred = _string$match8[7];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match11 = match;
+
+                  var _match12 = _slicedToArray(_match11, 8);
+
+                  match = _match12[0];
+                  year = _match12[1];
+                  month = _match12[2];
+                  day = _match12[3];
+                  var _match12$ = _match12[4];
+                  time_zone_sign = _match12$ === void 0 ? "+" : _match12$;
+                  time_zone_hour = _match12[5];
+                  time_zone_minute = _match12[6];
+                  time_zone_fourteen_hundred = _match12[7];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1268,22 +1269,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match9 = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))-(0[1-9]|1[0-2])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match10 = _slicedToArray(_string$match9, 7);
-
-                  match = _string$match10[0];
-                  year = _string$match10[1];
-                  month = _string$match10[2];
-                  var _string$match10$ = _string$match10[3];
-                  time_zone_sign = _string$match10$ === void 0 ? "+" : _string$match10$;
-                  time_zone_hour = _string$match10[4];
-                  time_zone_minute = _string$match10[5];
-                  time_zone_fourteen_hundred = _string$match10[6];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match13 = match;
+
+                  var _match14 = _slicedToArray(_match13, 7);
+
+                  match = _match14[0];
+                  year = _match14[1];
+                  month = _match14[2];
+                  var _match14$ = _match14[3];
+                  time_zone_sign = _match14$ === void 0 ? "+" : _match14$;
+                  time_zone_hour = _match14[4];
+                  time_zone_minute = _match14[5];
+                  time_zone_fourteen_hundred = _match14[6];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1302,21 +1305,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match11 = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^(-?(?:[1-9][0-9]{3,}|0[0-9]{3}))(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match12 = _slicedToArray(_string$match11, 6);
-
-                  match = _string$match12[0];
-                  year = _string$match12[1];
-                  var _string$match12$ = _string$match12[2];
-                  time_zone_sign = _string$match12$ === void 0 ? "+" : _string$match12$;
-                  time_zone_hour = _string$match12[3];
-                  time_zone_minute = _string$match12[4];
-                  time_zone_fourteen_hundred = _string$match12[5];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match15 = match;
+
+                  var _match16 = _slicedToArray(_match15, 6);
+
+                  match = _match16[0];
+                  year = _match16[1];
+                  var _match16$ = _match16[2];
+                  time_zone_sign = _match16$ === void 0 ? "+" : _match16$;
+                  time_zone_hour = _match16[3];
+                  time_zone_minute = _match16[4];
+                  time_zone_fourteen_hundred = _match16[5];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1335,22 +1340,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match13 = string.match(/^--(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^--(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match14 = _slicedToArray(_string$match13, 7);
-
-                  match = _string$match14[0];
-                  month = _string$match14[1];
-                  day = _string$match14[2];
-                  var _string$match14$ = _string$match14[3];
-                  time_zone_sign = _string$match14$ === void 0 ? "+" : _string$match14$;
-                  time_zone_hour = _string$match14[4];
-                  time_zone_minute = _string$match14[5];
-                  time_zone_fourteen_hundred = _string$match14[6];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match17 = match;
+
+                  var _match18 = _slicedToArray(_match17, 7);
+
+                  match = _match18[0];
+                  month = _match18[1];
+                  day = _match18[2];
+                  var _match18$ = _match18[3];
+                  time_zone_sign = _match18$ === void 0 ? "+" : _match18$;
+                  time_zone_hour = _match18[4];
+                  time_zone_minute = _match18[5];
+                  time_zone_fourteen_hundred = _match18[6];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1369,21 +1376,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match15 = string.match(/^---(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^---(0[1-9]|[12][0-9]|3[01])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match16 = _slicedToArray(_string$match15, 6);
-
-                  match = _string$match16[0];
-                  day = _string$match16[1];
-                  var _string$match16$ = _string$match16[2];
-                  time_zone_sign = _string$match16$ === void 0 ? "+" : _string$match16$;
-                  time_zone_hour = _string$match16[3];
-                  time_zone_minute = _string$match16[4];
-                  time_zone_fourteen_hundred = _string$match16[5];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match19 = match;
+
+                  var _match20 = _slicedToArray(_match19, 6);
+
+                  match = _match20[0];
+                  day = _match20[1];
+                  var _match20$ = _match20[2];
+                  time_zone_sign = _match20$ === void 0 ? "+" : _match20$;
+                  time_zone_hour = _match20[3];
+                  time_zone_minute = _match20[4];
+                  time_zone_fourteen_hundred = _match20[5];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1402,21 +1411,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     return;
                   }
 
-                  var _string$match17 = string.match(/^--(0[1-9]|1[0-2])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
+                  match = string.match(/^--(0[1-9]|1[0-2])(?:Z|(\+|-)(?:(0[0-9]|1[0-3]):([0-5][0-9])|(14:00)))?$/);
 
-                  var _string$match18 = _slicedToArray(_string$match17, 6);
-
-                  match = _string$match18[0];
-                  month = _string$match18[1];
-                  var _string$match18$ = _string$match18[2];
-                  time_zone_sign = _string$match18$ === void 0 ? "+" : _string$match18$;
-                  time_zone_hour = _string$match18[3];
-                  time_zone_minute = _string$match18[4];
-                  time_zone_fourteen_hundred = _string$match18[5];
-
-                  if (!match) {
+                  if (match == null) {
                     return;
                   }
+
+                  var _match21 = match;
+
+                  var _match22 = _slicedToArray(_match21, 6);
+
+                  match = _match22[0];
+                  month = _match22[1];
+                  var _match22$ = _match22[2];
+                  time_zone_sign = _match22$ === void 0 ? "+" : _match22$;
+                  time_zone_hour = _match22[3];
+                  time_zone_minute = _match22[4];
+                  time_zone_fourteen_hundred = _match22[5];
 
                   if (time_zone_hour != null && time_zone_minute != null) {
                     timezoneOffset = time_zone_hour * 60 + +time_zone_minute;
@@ -1470,10 +1481,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     "+": 62,
                     "/": 63
                   };
-                  ref10 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                  ref9 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-                  for (pos = i = 0, len = ref10.length; i < len; pos = ++i) {
-                    char = ref10[pos];
+                  for (pos = i = 0, len = ref9.length; i < len; pos = ++i) {
+                    char = ref9[pos];
                     base64_map[char] = pos;
                     base64_map[char.toLowerCase()] = pos + 26;
                   }
@@ -1525,7 +1536,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _Term.call(this, VARIABLE, value);
   };
 
-  Object.defineProperty(_NamedNode, "prototype", {
+  Object.defineProperty(_Variable, "prototype", {
     writable: false,
     value: Object.defineProperties(Variableℙ = Object.create(Termℙ), {
       constructor: {
@@ -1644,9 +1655,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       toString: {
         value: function value() {
-          var objectNT, predicateNT, ref1, ref2, ref3, subjectNT;
+          var objectNT, predicateNT, ref, ref1, ref2, subjectNT;
 
-          if (!(typeof (subjectNT = this != null ? (ref1 = this.subject) != null ? ref1.toNT : void 0 : void 0) === "function" && typeof (predicateNT = this != null ? (ref2 = this.predicate) != null ? ref2.toNT : void 0 : void 0) === "function" && typeof (objectNT = this != null ? (ref3 = this.objectNT) != null ? ref3.toNT : void 0 : void 0) === "function")) {
+          if (!(typeof (subjectNT = this != null ? (ref = this.subject) != null ? ref.toNT : void 0 : void 0) === "function" && typeof (predicateNT = this != null ? (ref1 = this.predicate) != null ? ref1.toNT : void 0 : void 0) === "function" && typeof (objectNT = this != null ? (ref2 = this.objectNT) != null ? ref2.toNT : void 0 : void 0) === "function")) {
             return Object.prototype.toString.call(this);
           }
 

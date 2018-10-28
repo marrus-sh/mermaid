@@ -28,8 +28,8 @@ Please try to ensure that one of these objects exists in your
   environment _before_ running this code—otherwise, nothing will
   happen!
 
-    global = self ? window ? exports
-    throw new ReferenceError "Unknown global object." unless global
+    global = self ? (window ? (exports ? null))
+    throw new ReferenceError "Unknown global object." unless global?
 
 ##  Required Constructors  ##
 

@@ -14,16 +14,19 @@
   },
   "bugs": "https://github.com/marrus-sh/mermaid/issues",
   "devDependencies": {
-    "Roost": "git+https://github.com/marrus-sh/Roost.git"
+    "Roost": "git+https://github.com/marrus-sh/Roost.git",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   },
   "directories": {
     "doc": "./Sources",
     "example": "./Demo",
-    "lib": "./Build"
+    "lib": "./Build",
+    "test": "./Tests"
   },
   "browser": "Build/mermaid.js",
   "scripts": {
     "prepare": "cake build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require coffeescript/register --recursive \"./Tests/*.coffee\""
   }
 }

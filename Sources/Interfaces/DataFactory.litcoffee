@@ -61,7 +61,7 @@ The `DataFactory` prototype defines factory functions for the various
 ###  `dataFactory.blankNode(value)`:
 
 `blankNode()` produces a `BlankNode`.
-If not present, a name will be auto&hyphen;generated&#mdash;but
+If not present, a name will be auto&hyphen;generated&mdash;but
   ｍｅｒｍａｉｄ is not able to guarantee that it will be unique.
 
         blankNode: value: (value) -> new BlankNode (

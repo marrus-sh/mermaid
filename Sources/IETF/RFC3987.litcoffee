@@ -36,6 +36,8 @@ The following is just a regexification of the ABNF in RFC3987.
           ^
           (  #  absoluteIRI
             (  #  scheme
+              [A-Za-z]
+              [A-Za-z0-9+\-\.]*
             )
             :
             (  #  ihierPart
@@ -524,8 +526,11 @@ The `RFC3987()` constructor returns an object whose properties give the
   various components of the IRI, as strings.
 
         RFC3987 = (iri) ->
-          [
-            match
+          match = (if iri then do iri.toString else "").match regex
+          throw new TypeError "
+            IRI <#{iri}> not well-formed under RFC3987
+          " unless match?
+          [ match
             absoluteIRI
             scheme
             ihierPart
@@ -544,10 +549,7 @@ The `RFC3987()` constructor returns an object whose properties give the
             ipathEmpty
             iquery
             ifragment
-          ] = (if iri then do iri.toString else "").match regex
-          throw new TypeError "
-            IRI not well-formed under RFC3987
-          " unless match?
+          ] = match
 
 It is not required that `RFC3987()` be called as a constructor.
 

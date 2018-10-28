@@ -43,7 +43,7 @@ The `BlankNode` constructor takes one argument, `identifier`, which
 
 The `BlankNode` prototype inherits from `RDFNode`.
 
-    Object.defineProperty NamedNode, "prototype",
+    Object.defineProperty BlankNode, "prototype",
       writable: no
       value: Object.defineProperties BlankNodeℙ = (
         Object.create RDFNodeℙ

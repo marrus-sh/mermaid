@@ -465,10 +465,9 @@ It doesn't make a difference (since stringification is the fallback),
 
               when "http://www.w3.org/2001/XMLSchema#decimal"
                 return unless (string = collapse literal)?
-                return unless ///
+                +string if ///
                   ^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$
                 ///.test string
-                +string if match?
 
 `xsd:integer`s, are decimal numbers with no fractional part and
   optional sign.
@@ -605,20 +604,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#dateTime"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -656,6 +642,19 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -670,20 +669,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -721,6 +707,19 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -735,17 +734,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#time"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (
                     ([01][0-9]|2[0-3])
@@ -777,6 +766,16 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -791,16 +790,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#date"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -821,7 +811,16 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -837,15 +836,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gYearMonth"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -864,7 +855,15 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  month
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -880,14 +879,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gYear"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   (?:
@@ -904,7 +896,14 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -921,15 +920,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gMonthDay"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  month
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   --
                   (0[1-9]|1[0-2])
@@ -949,7 +940,15 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  month
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -966,14 +965,7 @@ Note that all 31 days are valid in December.
 
               when "http://www.w3.org/2001/XMLSchema#gDay"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   ---
                   (0[1-9]|[12][0-9]|3[01])
@@ -991,7 +983,14 @@ Note that all 31 days are valid in December.
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -1006,14 +1005,7 @@ Note that all 31 days are valid in December.
 
               when "http://www.w3.org/2001/XMLSchema#gMonth"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  month
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   --
                   (0[1-9]|1[0-2])
@@ -1031,7 +1023,14 @@ Note that all 31 days are valid in December.
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  month
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute

@@ -38,7 +38,7 @@ The `Variable` constructor takes one argument, `name`, which provides
 
 The `Variable` prototype inherits from `Term`.
 
-    Object.defineProperty NamedNode, "prototype",
+    Object.defineProperty Variable, "prototype",
       writable: no
       value: Object.defineProperties Variableℙ = (Object.create Termℙ),
 

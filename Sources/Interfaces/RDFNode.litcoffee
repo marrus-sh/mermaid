@@ -63,7 +63,6 @@ This should be identical to the `termType` property for `RDFNode`s.
         interfaceName:
           configurable: yes
           enumerable: yes
-          writable: no
           get: -> termTypes[@interfaceType >>> 0]
 
 ###  `rdfNode.nominalValue`:
@@ -85,7 +84,6 @@ The `value` property gives the string representation of the node's
         value:
           configurable: yes
           enumerable: yes
-          writable: no
           get: ->
             if @nominalValue? then do @nominalValue.toString
             else String(@nominalValue)

@@ -100,7 +100,6 @@ The `termType` property gives the string value which corresponds to the
         termType:
           configurable: yes
           enumerable: yes
-          writable: no
           get: -> termTypes[@interfaceType >>> 0]
 
 ###  `term.value`:

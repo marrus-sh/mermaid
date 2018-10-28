@@ -30,7 +30,7 @@ The `DefaultGraph` constructor doesn't take any arguments.
     DefaultGraph = ->
       constructǃ @, DefaultGraph, "DefaultGraph"
 
-`Variable` extends `Term`.
+`DefaultGraph` extends `Term`.
 
       Term.call @, DEFAULT_GRAPH, ""
 

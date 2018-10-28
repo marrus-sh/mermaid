@@ -135,8 +135,10 @@ The `BCP47()` function returns an object whose properties give the
   various components of the language tag, as arrays.
 
         BCP47 = (tag) ->
-          [
-            match
+          match = (if tag? then do tag.toString else "").match regex
+          throw new TypeError "Language tag not well-formed under
+            BCP47" unless match?
+          [ match
             langtag
             language
             extlang
@@ -147,9 +149,7 @@ The `BCP47()` function returns an object whose properties give the
             privateuse
             privateuseonly
             grandfathered
-          ] = (if tag? then do tag.toString else "").match regex
-          throw new TypeError "Language tag not well-formed under
-            BCP47" unless match?
+          ] = match
 
 It is not required that `RFC3987()` be called as a constructor.
 

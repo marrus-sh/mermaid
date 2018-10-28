@@ -28,8 +28,8 @@ Please try to ensure that one of these objects exists in your
   environment _before_ running this code—otherwise, nothing will
   happen!
 
-    global = self ? window ? exports
-    throw new ReferenceError "Unknown global object." unless global
+    global = self ? (window ? (exports ? null))
+    throw new ReferenceError "Unknown global object." unless global?
 
 ##  Required Constructors  ##
 
@@ -248,6 +248,8 @@ The following is just a regexification of the ABNF in RFC3987.
           ^
           (  #  absoluteIRI
             (  #  scheme
+              [A-Za-z]
+              [A-Za-z0-9+\-\.]*
             )
             :
             (  #  ihierPart
@@ -736,8 +738,11 @@ The `RFC3987()` constructor returns an object whose properties give the
   various components of the IRI, as strings.
 
         RFC3987 = (iri) ->
-          [
-            match
+          match = (if iri then do iri.toString else "").match regex
+          throw new TypeError "
+            IRI <#{iri}> not well-formed under RFC3987
+          " unless match?
+          [ match
             absoluteIRI
             scheme
             ihierPart
@@ -756,10 +761,7 @@ The `RFC3987()` constructor returns an object whose properties give the
             ipathEmpty
             iquery
             ifragment
-          ] = (if iri then do iri.toString else "").match regex
-          throw new TypeError "
-            IRI not well-formed under RFC3987
-          " unless match?
+          ] = match
 
 It is not required that `RFC3987()` be called as a constructor.
 
@@ -1062,8 +1064,10 @@ The `BCP47()` function returns an object whose properties give the
   various components of the language tag, as arrays.
 
         BCP47 = (tag) ->
-          [
-            match
+          match = (if tag? then do tag.toString else "").match regex
+          throw new TypeError "Language tag not well-formed under
+            BCP47" unless match?
+          [ match
             langtag
             language
             extlang
@@ -1074,9 +1078,7 @@ The `BCP47()` function returns an object whose properties give the
             privateuse
             privateuseonly
             grandfathered
-          ] = (if tag? then do tag.toString else "").match regex
-          throw new TypeError "Language tag not well-formed under
-            BCP47" unless match?
+          ] = match
 
 It is not required that `RFC3987()` be called as a constructor.
 
@@ -1341,7 +1343,6 @@ The `termType` property gives the string value which corresponds to the
         termType:
           configurable: yes
           enumerable: yes
-          writable: no
           get: -> termTypes[@interfaceType >>> 0]
 
 ###  `term.value`:
@@ -1513,7 +1514,6 @@ This should be identical to the `termType` property for `RDFNode`s.
         interfaceName:
           configurable: yes
           enumerable: yes
-          writable: no
           get: -> termTypes[@interfaceType >>> 0]
 
 ###  `rdfNode.nominalValue`:
@@ -1535,7 +1535,6 @@ The `value` property gives the string representation of the node's
         value:
           configurable: yes
           enumerable: yes
-          writable: no
           get: ->
             if @nominalValue? then do @nominalValue.toString
             else String(@nominalValue)
@@ -1750,7 +1749,7 @@ The `BlankNode` constructor takes one argument, `identifier`, which
 
 The `BlankNode` prototype inherits from `RDFNode`.
 
-    Object.defineProperty NamedNode, "prototype",
+    Object.defineProperty BlankNode, "prototype",
       writable: no
       value: Object.defineProperties BlankNodeℙ = (
         Object.create RDFNodeℙ
@@ -2343,10 +2342,9 @@ It doesn't make a difference (since stringification is the fallback),
 
               when "http://www.w3.org/2001/XMLSchema#decimal"
                 return unless (string = collapse literal)?
-                return unless ///
+                +string if ///
                   ^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$
                 ///.test string
-                +string if match?
 
 `xsd:integer`s, are decimal numbers with no fractional part and
   optional sign.
@@ -2483,20 +2481,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#dateTime"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -2534,6 +2519,19 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2548,20 +2546,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -2599,6 +2584,19 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2613,17 +2611,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#time"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  hour = 0
-                  minute = 0
-                  second = 0
-                  twenty_four_hundred
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (
                     ([01][0-9]|2[0-3])
@@ -2655,6 +2643,16 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   $
                 ///
                 return unless match?
+                [ match
+                  hour = 0
+                  minute = 0
+                  second = 0
+                  twenty_four_hundred
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2669,16 +2667,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#date"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -2699,7 +2688,16 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  month
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2715,15 +2713,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gYearMonth"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  month
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   -
@@ -2742,7 +2732,15 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  month
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2758,14 +2756,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gYear"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  year
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   (-?(?:[1-9][0-9]{3,}|0[0-9]{3}))
                   (?:
@@ -2782,7 +2773,14 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  year
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2799,15 +2797,7 @@ Technically speaking, `xsd:float`s do not have as much precision as
 
               when "http://www.w3.org/2001/XMLSchema#gMonthDay"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  month
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   --
                   (0[1-9]|1[0-2])
@@ -2827,7 +2817,15 @@ Technically speaking, `xsd:float`s do not have as much precision as
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  month
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2844,14 +2842,7 @@ Note that all 31 days are valid in December.
 
               when "http://www.w3.org/2001/XMLSchema#gDay"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  day
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   ---
                   (0[1-9]|[12][0-9]|3[01])
@@ -2869,7 +2860,14 @@ Note that all 31 days are valid in December.
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  day
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -2884,14 +2882,7 @@ Note that all 31 days are valid in December.
 
               when "http://www.w3.org/2001/XMLSchema#gMonth"
                 return unless (string = collapse literal)?
-                [
-                  match
-                  month
-                  time_zone_sign = "+"
-                  time_zone_hour
-                  time_zone_minute
-                  time_zone_fourteen_hundred
-                ] = string.match ///
+                match = string.match ///
                   ^
                   --
                   (0[1-9]|1[0-2])
@@ -2909,7 +2900,14 @@ Note that all 31 days are valid in December.
                   )?
                   $
                 ///
-                return unless match
+                return unless match?
+                [ match
+                  month
+                  time_zone_sign = "+"
+                  time_zone_hour
+                  time_zone_minute
+                  time_zone_fourteen_hundred
+                ] = match
                 if time_zone_hour? and time_zone_minute?
                   timezoneOffset = time_zone_hour * 60 +
                     +time_zone_minute
@@ -3052,7 +3050,7 @@ The `Variable` constructor takes one argument, `name`, which provides
 
 The `Variable` prototype inherits from `Term`.
 
-    Object.defineProperty NamedNode, "prototype",
+    Object.defineProperty Variable, "prototype",
       writable: no
       value: Object.defineProperties Variableℙ = (Object.create Termℙ),
 
@@ -3123,7 +3121,7 @@ The `DefaultGraph` constructor doesn't take any arguments.
     DefaultGraph = ->
       constructǃ @, DefaultGraph, "DefaultGraph"
 
-`Variable` extends `Term`.
+`DefaultGraph` extends `Term`.
 
       Term.call @, DEFAULT_GRAPH, ""
 
@@ -3515,7 +3513,7 @@ The `DataFactory` prototype defines factory functions for the various
 ###  `dataFactory.blankNode(value)`:
 
 `blankNode()` produces a `BlankNode`.
-If not present, a name will be auto&hyphen;generated&#mdash;but
+If not present, a name will be auto&hyphen;generated&mdash;but
   ｍｅｒｍａｉｄ is not able to guarantee that it will be unique.
 
         blankNode: value: (value) -> new BlankNode (
